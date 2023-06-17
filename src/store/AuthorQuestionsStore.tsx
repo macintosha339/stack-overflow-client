@@ -3,7 +3,7 @@ import { Question } from '../interfaces/Question';
 
 // Эффект для загрузки популярных вопросов автора
 export const fetchAuthorQuestions = createEffect<string, Question[]>(async (author) => {
-  const response = await fetch(`https://api.stackexchange.com/2.3/search/advanced?pagesize=5&order=desc&sort=activity&user=${author}&site=stackoverflow`);
+  const response = await fetch(`https://api.stackexchange.com/2.3/search/advanced?pagesize=3&order=desc&sort=activity&user=${author}&site=stackoverflow`);
   const data = await response.json();
   return data.items;
 });

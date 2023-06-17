@@ -1,0 +1,18 @@
+.question-info-screen {
+    margin: 0 auto;
+    padding: 16px;
+    width: 500px;
+  }
+  
+  .answer-link {
+    margin-bottom: 8px;
+  }
+  
+  .answer-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .answer-link a:hover {
+    text-decoration: underline;
+  }

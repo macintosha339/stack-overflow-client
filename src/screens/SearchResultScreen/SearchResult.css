@@ -1,0 +1,39 @@
+.search-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-result {
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-result-author,
+  .search-result-title,
+  .search-result-answer-count {
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+  
+  .search-result-tagsList {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-top: 5px;
+    padding: 0;
+  }
+  
+  .search-result-tag {
+    cursor: pointer;
+    margin-right: 5px;
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+  }

@@ -6,6 +6,9 @@ import { searchResultsStore } from "../../store/SearchResultsStore";
 import { fetchAuthorQuestions } from "../../store/AuthorQuestionsStore";
 import { fetchTagQuestions, tagQuestionsStore } from "../../store/TagQestionsStore";
 import { authorQuestionsStore } from "../../store/AuthorQuestionsStore";
+import { fetchQuestionInfo } from "../../store/QuestionInfoStore";
+import './SearchResult.css';
+import '../../components/Modal.css';
 
 const SearchResultScreen: React.FC = () => {
   const searchResults = useStore(searchResultsStore);
@@ -28,7 +31,8 @@ const SearchResultScreen: React.FC = () => {
     fetchTagQuestions(tag);
   };
 
-  const handleQuestionClick = (questionId: number) => {
+  const handleQuestionClick = (questionId: string) => {
+    fetchQuestionInfo(questionId);
     navigate("/question-info");
   };
 
@@ -48,21 +52,22 @@ const SearchResultScreen: React.FC = () => {
               className="search-result-author"
               onClick={() => handleAuthorClick(result.owner.user_id, result.owner.display_name)}
             >
-              {result.owner.display_name}
+              Author: {result.owner.display_name}
             </div>
             <div
               className="search-result-title"
-              onClick={() => handleQuestionClick(0)}
+              onClick={() => handleQuestionClick(result.question_id)}
             >
-              {result.title}
+              Title: {result.title}
             </div>
             <div
               className="search-result-answer-count"
-              onClick={() => handleQuestionClick(0)}
+              onClick={() => handleQuestionClick(result.question_id)}
             >
-              {result.answer_count}
+              Answers: {result.answer_count}
             </div>
             <ul className="search-result-tagsList">
+              Tags:
               {result.tags.map((tag: string) => (
                 <li
                   className="search-result-tag"
@@ -78,10 +83,7 @@ const SearchResultScreen: React.FC = () => {
 
         {showModal && (
           <div className="modal">
-          <ModalContent questions={selectedAuthor ? authorQuestions : tagQuestions} />
-          <button className="modal-close" onClick={handleCloseModal}>
-            Закрыть
-          </button>
+          <ModalContent questions={selectedAuthor ? authorQuestions : tagQuestions} handleCloseModal={handleCloseModal} />
         </div>
         )}
       </div>
