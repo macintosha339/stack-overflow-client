@@ -7,7 +7,7 @@ import './App.css'
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<SearchScreen />} />
         <Route path="/search-results" element={<SearchResultScreen />} />
